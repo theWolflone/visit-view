@@ -21,52 +21,65 @@ class Places extends Component {
     const muestra = { visibility: "vivible" };
     return (
       <React.Fragment>
-        <div className="grid grid-cols-1 gap-4">
-          <input
-            type="text"
-            className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-500 focus:outline-none focus:border-blue-500"
-            id="NOMBRE"
-            placeholder="Nombre"
-            onChange={(evt) => this.actualizadatosaguardar(evt)}
-          />
-          <input
-            type="text"
-            className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-500 focus:outline-none focus:border-blue-500"
-            id="PROVINCIA"
-            placeholder="Provincia"
-            onChange={(evt) => this.actualizadatosaguardar(evt)}
-          />
-          <input
-            type="text"
-            className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-500 focus:outline-none focus:border-blue-500"
-            id="CANTON"
-            placeholder="Cantón"
-            onChange={(evt) => this.actualizadatosaguardar(evt)}
-          />
-          <input
-            type="text"
-            className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring focus:ring-blue-500 focus:outline-none focus:border-blue-500"
-            id="DISTRITO"
-            placeholder="Distrito"
-            onChange={(evt) => this.actualizadatosaguardar(evt)}
-          />
-          <input
-            type="file"
-            className="w-full px-3 py-2 rounded-lg border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-            id="FOTO"
-            placeholder="Foto"
-            onChange={(evt) => this.actualizadatosaguardar(evt)}
-          />
-          <img src={this.state.LUGAR.FOTO} style={inputStyleimg} />
-
-          <input
-            type="button"
-            className="btn btn-primary"
-            id="botonguardar"
-            value="Guardar"
-            onClick={this.guardarLugar}
-          />
-        </div>
+          <div className="h-screen bg-slate-100 z-10">
+            <h1></h1>
+            <div className="flex justify-center">
+              <div className="border bg-white rounded-md p-4 mx-auto mt-12 items-center">
+                <div className="flex flex-col space-y-4 space-x-96 items-center">
+                  <h1 className="text-2xl font-bold">Visit View</h1>
+                  <input
+                    type="text"
+                    className="border border-gray-400 p-2 rounded-md "
+                    id="NOMBRE"
+                    placeholder="Nombre"
+                    onChange={(evt) => this.actualizadatosaguardar(evt)}
+                  />
+                  <input
+                    type="text"
+                    className="border border-gray-400 p-2 rounded-md"
+                    id="PROVINCIA"
+                    placeholder="Provincia"
+                    onChange={(evt) => this.actualizadatosaguardar(evt)}
+                  />
+                  <input
+                    type="text"
+                    className="border border-gray-400 p-2 rounded-md"
+                    id="CANTON"
+                    placeholder="Cantón"
+                    onChange={(evt) => this.actualizadatosaguardar(evt)}
+                  />
+                  <input
+                    type="text"
+                    className="border border-gray-400 p-2 rounded-md"
+                    id="DISTRITO"
+                    placeholder="Distrito"
+                    onChange={(evt) => this.actualizadatosaguardar(evt)}
+                  />
+                  <input
+                    type="file"
+                    className="hidden"
+                    id="FOTO"
+                    placeholder="Foto"
+                    onChange={(evt) => this._onChange(evt)}
+                  />
+                  <label
+                    htmlFor="FOTO"
+                    className="cursor-pointer border border-gray-400 p-2 rounded-md"
+                  >
+                    Subir Foto
+                  </label>
+                  <img src={this.state.LUGAR.FOTO} style={inputStyleimg} />
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    id="botonguardar"
+                    onClick={this.guardarLugar}
+                  >
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
       </React.Fragment>
     );
   }
