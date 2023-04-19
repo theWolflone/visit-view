@@ -2,14 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Login from "./components/login";
-import Places from "./components/addPlaces";
+import { Menu } from "./components/menu";
+import {Places} from "./components/addPlaces";
 import reportWebVitals from "./reportWebVitals";
 
 
 // Hacemos el render de nuestra aplicación para de este modo mostrar los componentes específicos.
 ReactDOM.render(
   <React.StrictMode>
-    <Places/>
+    <Menu/>
+    {/* <Places/> */}
     {/* <Login/> */}
   </React.StrictMode>,
   document.getElementById("root")

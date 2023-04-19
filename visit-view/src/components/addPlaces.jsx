@@ -25,7 +25,7 @@ class Places extends Component {
             <h1></h1>
             <div className="flex justify-center">
               <div className="border bg-white rounded-md p-4 mx-auto mt-12 items-center">
-                <div className="flex flex-col space-y-4 space-x-96 items-center">
+                <div className="flex flex-col space-y-4 mx-20 items-center">
                   <h1 className="text-2xl font-bold">Visit View</h1>
                   <input
                     type="text"
@@ -214,4 +214,4 @@ class Places extends Component {
   };
 }
 
-export default Places;
+export {Places};

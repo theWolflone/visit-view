@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Principal from "./menu";
+import {Menu} from "./menu";
 class Login extends Component {
   state = {
     persona: {
@@ -18,7 +18,7 @@ class Login extends Component {
     if (this.state.ingresaralsistema) {
       return (
         <React.Fragment>
-          <Principal />
+          <Menu />
         </React.Fragment>
       );
     } else {
