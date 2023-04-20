@@ -12,7 +12,7 @@ class Menu extends Component {
     if (this.state.muestraLugares) {
       return (
         <React.Fragment>
-          <div className="space-x-32 my-4 text-center">
+          <div className="space-x-32 py-4 text-center bg-white">
             <input
               type="button"
               value="Añadir lugares"
@@ -33,17 +33,19 @@ class Menu extends Component {
     if (this.state.muestraTabla) {
       return (
         <React.Fragment>
-          <input
-            type="button"
-            value="Añadir lugares"
-            onClick={(e) => this.muestraLugares()}
-          />
-          <input
-            type="button"
-            value="Tabla"
-            onClick={(e) => this.muestraTabla()}
-          />
-          <br />
+          <div className="space-x-32 py-4 text-center bg-white">
+            <input
+              type="button"
+              value="Añadir lugares"
+              onClick={(e) => this.muestraLugares()}
+            />
+            <input
+              type="button"
+              value="Tabla"
+              onClick={(e) => this.muestraTabla()}
+            />
+            <br />
+          </div>
           <Tabla />
         </React.Fragment>
       );

@@ -66,3 +66,21 @@ exports.Eliminar = function (req, res) {
   });
 };
 //Elimina un objeto específico.
+
+exports.Listar = function (req, res) {
+  Item.find((err, item) => {
+    if (err) {
+      res.json({
+        resultado: false,
+        msj: "No se pudieron registrar las personas",
+        err,
+      });
+    } else {
+      res.json({
+        resultado: true,
+        msj: "Las personas se listaron adecuadamente",
+        item,
+      });
+    }
+  });
+};

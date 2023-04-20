@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Menu} from "./menu";
+import { Menu } from "./menu";
 class Login extends Component {
   state = {
     persona: {
@@ -24,38 +24,32 @@ class Login extends Component {
     } else {
       return (
         <React.Fragment>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6 mx-auto mt-5">
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">Iniciar sesión</h5>
-                    <div className="form-group">
-                      <label for="exampleInputEmail1">Correo</label>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <h5>Iniciar sesión</h5>
+                    <div>
+                      <label htmlFor="exampleInputEmail1">Correo</label>
                       <input
                         type="email"
-                        className="form-control"
                         id="email"
                         aria-describedby="emailHelp"
                         placeholder="Ingrese su correo..."
                         onChange={(evt) => this.actualizadatosaverificar(evt)}
                       />
                     </div>
-                    <div className="form-group">
-                      <label for="exampleInputPassword1">Contraseña</label>
+                    <div>
+                      <label htmlFor="exampleInputPassword1">Contraseña</label>
                       <input
                         type="password"
-                        className="form-control"
                         id="password"
                         placeholder="Ingrese su contraseña..."
                         onChange={(evt) => this.actualizadatosaverificar(evt)}
                       />
                     </div>
-                    <button
-                      type="submit"
-                      className="btn btn-primary"
-                      onClick={this.Ingreso}
-                    >
+                    <button type="submit" onClick={this.Ingreso}>
                       Enviar
                     </button>
                   </div>
@@ -90,7 +84,7 @@ class Login extends Component {
 
   Ingreso = () => {
     var objetolocal = this.state.persona;
-    const recipeUrl = "http://localhost:8080/api/loginuser";
+    const recipeUrl = "http://localhost:8888/api/loginuser";
     const requestMetadata = {
       method: "POST",
       headers: {
@@ -104,9 +98,9 @@ class Login extends Component {
       .then((persona) => {
         if (persona.length === 1) {
           alert("Ingreso exitoso");
-              this.setState({
-                  ingresaralsistema: true,
-                    });
+          this.setState({
+            ingresaralsistema: true,
+          });
         } else {
           alert("Algun dato es erroneo");
         }
@@ -114,4 +108,4 @@ class Login extends Component {
   };
 }
 
-export default Login;
+export { Login };

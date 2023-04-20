@@ -1,3 +1,4 @@
+
 class Place {
   constructor(
     _id,
@@ -79,4 +80,27 @@ class Place {
       }
     });
   }
+
+  Listar(){
+      var objetoAenviar = this;
+      return new Promise(function (resolve, reject) {
+        try {
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "/api/listarlugar");
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              resolve(JSON.parse(xhr.responseText));
+            } else {
+              reject(xhr);
+            }
+          };
+          xhr.send(JSON.stringify(objetoAenviar));
+        } catch (err) {
+          reject(err.message);
+        }
+      });
+    }
 }
+
+

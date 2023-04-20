@@ -25,6 +25,7 @@ module.exports = function (app) {
   app.put("/api/nuevolugar", placeController.Guardar);
   app.delete("/api/eliminalugar", placeController.Eliminar);
   app.post("/api/modificalugar", placeController.Modificar);
+  app.get("/api/listarlugar", placeController.Listar);
   app.put("/api/nuevousuario", controllerPersona.Guardar);
   app.delete("/api/eliminausuario", controllerPersona.Eliminar);
   app.post("/api/modificausuario", controllerPersona.Modificar);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Tabla } from "./tabla";
 class Places extends Component {
   state = {
     LUGAR: {
@@ -21,7 +22,7 @@ class Places extends Component {
     const muestra = { visibility: "vivible" };
     return (
       <React.Fragment>
-          <div className="h-screen bg-slate-100 z-10">
+          <div className="z-10">
             <h1></h1>
             <div className="flex justify-center">
               <div className="border bg-white rounded-md p-4 mx-auto mt-12 items-center">
@@ -68,7 +69,6 @@ class Places extends Component {
                   >
                     Subir Foto
                   </label>
-                  <img src={this.state.LUGAR.FOTO} style={inputStyleimg} />
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     id="botonguardar"
@@ -162,32 +162,7 @@ class Places extends Component {
         alert("Guardado");
       });
   };
-
-  eliminarLugar = (id) => {
-    console.log(id);
-
-    var objetolocal = this.state.LUGAR;
-    objetolocal._id = id;
-    const Url = "http://localhost:8888/api/eliminalugar";
-    const requestMetadata = {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(objetolocal),
-    };
-    fetch(Url, requestMetadata)
-      .then((res) => res.json())
-      .then((lugares) => {
-        console.log(lugares);
-
-        this.setState({
-          lugares: lugares,
-        });
-        alert("Eliminado");
-      });
-  };
-
+  
   modificarLugar = (id) => {
     console.log(id);
 
