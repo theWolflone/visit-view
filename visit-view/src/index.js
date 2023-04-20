@@ -4,15 +4,16 @@ import "./index.css";
 import {Login} from "./components/login";
 import { Menu } from "./components/menu";
 import {Places} from "./components/addPlaces";
+import App from  "./App"
 import reportWebVitals from "./reportWebVitals";
 
 
 // Hacemos el render de nuestra aplicación para de este modo mostrar los componentes específicos.
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Menu/> */}
+    <Menu/>
     {/* <Places/> */}
-    <Login/>
+    {/* <Login/> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

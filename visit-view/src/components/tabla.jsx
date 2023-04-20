@@ -76,7 +76,7 @@ class Tabla extends Component {
               <th className="py-2 px-4 border border-gray-400">Acciones</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="items-center">
             {this.state.lugares.map((lugar) => (
               <tr key={lugar._id} className="border border-gray-400">
                 <td className="py-2 px-4 border border-gray-400">
