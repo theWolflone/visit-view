@@ -4,6 +4,7 @@ import "./index.css";
 import {Login} from "./components/login";
 import { Menu } from "./components/menu";
 import {Places} from "./components/addPlaces";
+import {Landing} from "./components/landing";
 import App from  "./App"
 import reportWebVitals from "./reportWebVitals";
 
@@ -14,6 +15,7 @@ ReactDOM.render(
     <Menu/>
     {/* <Places/> */}
     {/* <Login/> */}
+    {/* <Landing/> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
