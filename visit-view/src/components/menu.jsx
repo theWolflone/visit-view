@@ -60,7 +60,7 @@ class Menu extends Component {
         return (
           <React.Fragment>
             <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24">
-              <img className="absolute h-12 my-auto left-20"
+              <img className="absolute md:h-10 my-auto left-10 sm:h-8 h-4"
                 type="button"
                 src={MenuLogo}
                 onClick={(e) => this.muestraHome()}
@@ -86,7 +86,7 @@ class Menu extends Component {
         return (
           <React.Fragment>
             <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24">
-              <img className="absolute h-12 my-auto left-20"
+              <img className="absolute md:h-10 my-auto left-10 sm:h-8 h-4"
                 type="button"
                 src={MenuLogo}
                 onClick={(e) => this.muestraHome()}
@@ -110,7 +110,7 @@ class Menu extends Component {
         return (
           <React.Fragment>
             <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24">
-              <img className="absolute h-12 my-auto left-20"
+              <img className="absolute md:h-10 my-auto left-10 sm:h-8 h-4"
                 type="button"
                 src={MenuLogo}
                 onClick={(e) => this.muestraHome()}
