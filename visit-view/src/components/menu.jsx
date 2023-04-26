@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Places } from "./addPlaces";
 import { Tabla } from "./tabla";
 import { Landing } from "./landing";
+import MenuLogo from "../assets/logo-no-background.png"
 
 class Menu extends Component {
   state = {
@@ -58,13 +59,13 @@ class Menu extends Component {
       if (this.state.muestraHome) {
         return (
           <React.Fragment>
-            <div className="space-x-32 py-4 text-center bg-white">
-              <input
+            <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24">
+              <img className="absolute h-12 my-auto left-20"
                 type="button"
-                value="Home"
+                src={MenuLogo}
                 onClick={(e) => this.muestraHome()}
               />
-              <input
+              <input className=""
                 type="button"
                 value="Sign Up"
                 onClick={(e) => this.muestraSignUp()}
@@ -84,13 +85,13 @@ class Menu extends Component {
       if (this.state.muestraSignUp) {
         return (
           <React.Fragment>
-            <div className="space-x-32 py-4 text-center bg-white">
-              <input
+            <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24">
+              <img className="absolute h-12 my-auto left-20"
                 type="button"
-                value="Home"
+                src={MenuLogo}
                 onClick={(e) => this.muestraHome()}
               />
-              <input
+              <input className=""
                 type="button"
                 value="Sign Up"
                 onClick={(e) => this.muestraSignUp()}
@@ -108,13 +109,13 @@ class Menu extends Component {
       if (this.state.muestraLogIn) {
         return (
           <React.Fragment>
-            <div className="space-x-32 py-4 text-center bg-white">
-              <input
+            <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24">
+              <img className="absolute h-12 my-auto left-20"
                 type="button"
-                value="Home"
+                src={MenuLogo}
                 onClick={(e) => this.muestraHome()}
               />
-              <input
+              <input className=""
                 type="button"
                 value="Sign Up"
                 onClick={(e) => this.muestraSignUp()}
