@@ -1,7 +1,16 @@
 import React, { Component } from "react";
+import { Menu } from "./menu";
 import background from "../assets/background.jpg";
 import WhiteLogo from "../assets/whiteLogo.png";
+
 class Landing extends Component {
+
+  directLog = () => {
+    this.props.loginView(true);
+    this.props.signupView(false);
+    this.props.homeView(false);
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -14,11 +23,14 @@ class Landing extends Component {
               className="h-20 opacity-100 mx-auto"
             />
             <h1 className="p-6 text-2xl text-white">
-              Guarda y explora lo visitado por el mundo
+              Guarda y explora lo que has visitado por el mundo
             </h1>
-            <button className="relative rounded-xl shadow-xl group flex items-center text-green-800 justify-center bg-white px-8 py-3 hover:text-white font-semibold">
+            <button
+              onClick={this.funLog}
+              className="relative rounded-xl shadow-xl group flex items-center text-green-800 justify-center bg-white px-8 py-3 hover:text-white font-semibold"
+            >
               <div className="absolute rounded-xl inset-0 w-0 bg-emerald-700 transition-all duration-[250ms] ease-out group-hover:w-full group-hover:rounded-xl"></div>
-              
+
               <span className="z-50 text-2xl">Ingresar</span>
             </button>
           </div>
@@ -29,6 +41,9 @@ class Landing extends Component {
       </React.Fragment>
     );
   }
+  funLog = () => {
+    this.directLog();
+  };
 }
 
 export { Landing };

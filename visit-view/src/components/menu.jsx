@@ -3,36 +3,72 @@ import { Places } from "./addPlaces";
 import { Tabla } from "./tabla";
 import { Landing } from "./landing";
 import { Login } from "./login";
+import { Signup } from "./signUp";
 import MenuLogo from "../assets/logo-no-background.png";
 
 class Menu extends Component {
-  state = {
-    muestraLugares: true,
-    muestraTabla: false,
-    muestraHome: true,
-    muestraLogIn: false,
-    muestraSignUp: false,
-    userLogged: false,
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      muestraLugares: true,
+      muestraTabla: false,
+      muestraHome: true,
+      muestraLogIn: false,
+      muestraSignUp: false,
+      userLogged: false,
+    }
+  }
+  userState = ()=> {
+    this.setState({userLogged:true})
+  }
+  loginView = ()=> {
+    this.setState({muestraLogIn:true})
+  }
+  signupView = ()=> {
+    this.setState({muestraSignUp:false})
+  }
+  homeView = ()=> {
+    this.setState({muestraHome:false})
+  }
+
+  
 
   render() {
     if (this.state.userLogged) {
       if (this.state.muestraLugares) {
         return (
           <React.Fragment>
-            <div className="space-x-32 py-4 text-center bg-white">
-              <input
+            <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24 ">
+              <img
+                className="absolute md:h-10 my-auto left-10 sm:h-8 h-4 cursor-pointer"
                 type="button"
-                value="Añadir lugares"
+                src={MenuLogo}
+                // onClick={(e) => this.muestraLugares()}
+              />
+              <button
                 onClick={(e) => this.muestraLugares()}
-              />
-              <input
-                type="button"
-                value="Tabla"
+                id=""
+                href=""
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+              >
+                <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
+                  Añadir lugares
+                </span>
+              </button>
+
+              <button
                 onClick={(e) => this.muestraTabla()}
-              />
+                id=""
+                href=""
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+              >
+                <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
+                  Ver lugares
+                </span>
+              </button>
               <br />
             </div>
+            <Places/>
           </React.Fragment>
         );
       }
@@ -40,19 +76,37 @@ class Menu extends Component {
       if (this.state.muestraTabla) {
         return (
           <React.Fragment>
-            <div className="space-x-32 py-4 text-center bg-white">
-              <input
+            <div className="space-x-32 py-6 text-center bg-white flex items-center justify-end text-lg pr-24 ">
+              <img
+                className="absolute md:h-10 my-auto left-10 sm:h-8 h-4 cursor-pointer"
                 type="button"
-                value="Añadir lugares"
+                src={MenuLogo}
+                // onClick={(e) => this.muestraLugares()}
+              />
+              <button
                 onClick={(e) => this.muestraLugares()}
-              />
-              <input
-                type="button"
-                value="Tabla"
+                id=""
+                href=""
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+              >
+                <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
+                  Añadir lugares
+                </span>
+              </button>
+
+              <button
                 onClick={(e) => this.muestraTabla()}
-              />
+                id=""
+                href=""
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+              >
+                <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
+                  Ver lugares
+                </span>
+              </button>
               <br />
             </div>
+            <Tabla/>
           </React.Fragment>
         );
       }
@@ -82,7 +136,7 @@ class Menu extends Component {
                 onClick={(e) => this.muestraLogIn()}
                 id=""
                 href=""
-                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-500 md:before:bg-green-500 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
                   Log In
@@ -90,7 +144,7 @@ class Menu extends Component {
               </button>
               <br />
             </div>
-            <Landing />
+            <Landing loginView={this.loginView} signupView={this.signupView} homeView={this.homeView}/>
           </React.Fragment>
         );
       }
@@ -109,7 +163,7 @@ class Menu extends Component {
                 onClick={(e) => this.muestraSignUp()}
                 id=""
                 href=""
-                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-500 md:before:bg-green-500 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
                   Sign Up
@@ -120,7 +174,7 @@ class Menu extends Component {
                 onClick={(e) => this.muestraLogIn()}
                 id=""
                 href=""
-                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-500 md:before:bg-green-500 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
                   Log In
@@ -128,7 +182,7 @@ class Menu extends Component {
               </button>
               <br />
             </div>
-            
+            <Signup loginView={this.loginView} signupView={this.signupView} homeView={this.homeView}/>
           </React.Fragment>
         );
       }
@@ -146,7 +200,7 @@ class Menu extends Component {
                 onClick={(e) => this.muestraSignUp()}
                 id=""
                 href=""
-                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-500 md:before:bg-green-500 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
                   Sign Up
@@ -157,7 +211,7 @@ class Menu extends Component {
                 onClick={(e) => this.muestraLogIn()}
                 id=""
                 href=""
-                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-500 md:before:bg-green-500 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
+                className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
                   Log In
@@ -165,7 +219,7 @@ class Menu extends Component {
               </button>
               <br />
             </div>
-            <Login />
+            <Login userState={this.userState}/>
           </React.Fragment>
         );
       }
