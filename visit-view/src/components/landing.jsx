@@ -16,10 +16,10 @@ class Landing extends Component {
             <h1 className="p-6 text-2xl text-white">
               Guarda y explora lo visitado por el mundo
             </h1>
-            <button className="relative rounded-full shadow-xl group flex items-center text-black justify-center bg-gradient-to-r bg-white px-5 py-2">
-              <div className="absolute rounded-full inset-0 w-0 bg-black transition-all duration-[0.3s] ease-out group-hover:w-full"></div>
+            <button className="relative rounded-xl shadow-xl group flex items-center text-green-800 justify-center bg-white px-8 py-3 hover:text-white font-semibold">
+              <div className="absolute rounded-xl inset-0 w-0 bg-emerald-700 transition-all duration-[250ms] ease-out group-hover:w-full group-hover:rounded-xl"></div>
               
-              <span className="">Ingresar</span>
+              <span className="z-50 text-2xl">Ingresar</span>
             </button>
           </div>
           <div className="h-[92.1%] w-full absolute lg:h-[88.6%]">
