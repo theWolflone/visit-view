@@ -1,9 +1,14 @@
+// Importamos las librerías necesarias: React, Component y SweetAlert2. Además importamos Places que será necesario para acceder.
 import React, { Component } from "react";
 import { Places } from "./addPlaces";
 import Swal from "sweetalert2";
+
+// Creamos la clase Login que extiende de Component
 class Login extends Component {
+  // Creamos el constructor con las propiedades
   constructor(props) {
     super(props);
+    // Creamos el estado con los datos de la persona y un arreglo de personas actuales
     this.state = {
       persona: {
         nombre: "",
@@ -16,23 +21,23 @@ class Login extends Component {
       ingresaralsistema: false,
     };
   }
+  // Creamos la función para enviar a otro componente el estado del usuario, si está loggeado o no
   handleLogged = () => {
     this.props.userState(true);
   };
-  createAccount = () => {
-    this.props.loginView(false);
-    this.props.signupView(true);
-    this.props.homeView(false);
-  }
+  
 
   render() {
+    // Creamos un condicional para saber si el usuario está loggeado o no
     if (this.state.ingresaralsistema) {
+      //Si es así, redirige a la creación de un lugar
       return (
         <React.Fragment>
           <Places />
         </React.Fragment>
       );
     } else {
+      // Si no, muestra el formulario de login
       return (
         <React.Fragment>
           <div className="bg-white">
@@ -71,7 +76,7 @@ class Login extends Component {
                         id="email"
                         placeholder="example@example.com"
                         className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                        onChange={(evt) => this.actualizadatosaverificar(evt)}
+                        onChange={(evt) => this.actualizadatosaverificar(evt)} //=> Función para seguir los cambios del input cuando se esté escribiendo en él
                       />
                     </div>
 
@@ -88,7 +93,7 @@ class Login extends Component {
                         id="password"
                         placeholder="Contraseña"
                         className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                        onChange={(evt) => this.actualizadatosaverificar(evt)}
+                        onChange={(evt) => this.actualizadatosaverificar(evt)} // => Función para seguir los cambios del input cuando se esté escribiendo en él
                       />
                     </div>
 
@@ -101,17 +106,6 @@ class Login extends Component {
                         Ingresar
                       </button>
                     </div>
-
-                    {/* <p className="mt-4 text-sm text-center text-gray-400">
-                      ¿No tienes cuenta?{" "}
-                      <button
-                        className="text-blue-500 focus:outline-none focus:underline hover:underline cursor-pointer"
-                        onClick={this.noAccount}
-                        >
-                        Sign up
-                      </button>
-                      .
-                    </p> */}
                   </div>
                 </div>
               </div>
@@ -121,30 +115,39 @@ class Login extends Component {
       );
     }
   }
+
+  //Función para dar seguimiento a los inputs
   actualizadatosaverificar(evt) {
+    //Creamos el objeto donde almacenaremos a la persona
     var objetolocalpersona = new Object();
 
+    //Asignamos los valores del objeto persona con el state
     objetolocalpersona = this.state.persona;
     switch (evt.target.id) {
+      //Seguir los eventos dependiendo del input en el que se esté interactuando
       case "email": {
         console.log(this.state.persona);
         objetolocalpersona.email = evt.target.value;
         break;
       }
       case "password": {
-        console.log(this.state.persona);
         objetolocalpersona.password = evt.target.value;
         break;
       }
     }
+    //Igualamos el state de la persona con el objeto local que tenemos a enviar
     this.setState({
       persona: objetolocalpersona,
     });
   }
 
+  //Función para verificar si el usuario existe en la base de datos y así, poder loggearlo
   Ingreso = () => {
+    //Creamos el objeto local igualado con el state
     var objetolocal = this.state.persona;
+    //Llamamos a la función del backend para loggear al usuario
     const recipeUrl = "http://localhost:8888/api/loginuser";
+    //Generamos la request para enviar los datos y que se corroboren en la base de datos
     const requestMetadata = {
       method: "POST",
       headers: {
@@ -153,10 +156,13 @@ class Login extends Component {
       body: JSON.stringify(objetolocal),
     };
 
+    //Enviamos la request
     fetch(recipeUrl, requestMetadata)
       .then((res) => res.json())
       .then((persona) => {
+        //Si la persona existe, se loggea
         if (persona.length === 1) {
+          // Se envía un alert de invreso
           Swal.fire({
             icon: "success",
             title: "¡Bienvenido de nuevo!",
@@ -165,20 +171,30 @@ class Login extends Component {
             timer: 3000,
           });
           setTimeout(() => {
+            //Se actualiza el state para que se muestre el componente de lugares
             this.setState({
               ingresaralsistema: true,
             });
+            //Se llama a la función para que se muestre el menú correspondiente
             this.handleLogged();
           }, 3000);
         } else {
-          alert("Algun dato es erroneo");
+          //Si no existe, se envía un alert de error
+          Swal.fire({
+            icon: "success",
+            title: "¡Algún dato es erróneo!",
+            text: "Vuelve a intentarlo",
+            showConfirmButton: true,
+            confirmButtonText: "Entendido",
+            confirmButtonColor: "#d33",
+            timer: 3000,
+          });
         }
       });
   };
   
-  noAccount = () => {
-    this.createAccount();
-  };
+ 
 }
 
+//Exportamos el componente
 export { Login };

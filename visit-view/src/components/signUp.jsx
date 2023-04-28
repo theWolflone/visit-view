@@ -1,7 +1,11 @@
+// En la primera línea se importan las bibliotecas React y Swal.
 import React, { Component } from "react";
 import Swal from "sweetalert2";
 
+//La clase Signup extiende de la clase Componente de React
 class Signup extends Component {
+
+  // El estado de este componente tiene dos propiedades: persona y personasActuales. Persona es un objeto que representa la información del usuario que se está registrando: nombre, apellido, correo electrónico y contraseña. La propiedad personasActuales es una matriz que se utiliza para almacenar información sobre todos los usuarios que se han registrado en el sitio web.
   constructor(props) {
     super(props);
     this.state = {
@@ -14,12 +18,15 @@ class Signup extends Component {
       personasActuales: [],
     };
   }
+  //  goToLogIn() se encarga de cambiar la vista actual para ir a la vista de inicio de sesión. Este método se ejecuta cuando se hace clic en un botón que lleva a la vista de inicio de sesión.
+
   goToLogIn = () => {
     this.props.loginView(true);
     this.props.signupView(false);
     this.props.homeView(false);
   };
 
+  // render() es el que devuelve lo que se va a mostrar en la pantalla. Se utiliza JSX para describir la estructura del formulario.
   render() {
     return (
       <React.Fragment>
@@ -46,7 +53,7 @@ class Signup extends Component {
                       id="nombre"
                       placeholder="Nombre"
                       className=" block w-11/12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                      onChange={(evt) => this.actualizadatosaverificar(evt)}
+                      onChange={(evt) => this.actualizadatosaverificar(evt)} //=> Cuando se escriba en el input, se enviara a actualizadatosverificar
                     />
                   </div>
                   <div className=" mt-6 pl-8">
@@ -59,7 +66,7 @@ class Signup extends Component {
                       id="apellido"
                       placeholder="Apellido"
                       className=" block w-11/12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                      onChange={(evt) => this.actualizadatosaverificar(evt)}
+                      onChange={(evt) => this.actualizadatosaverificar(evt)} //Cuando se escriba en el input, se enviara a actualizadatosverificar
                     />
                   </div>
                   <div className=" mt-6 pl-8">
@@ -72,7 +79,7 @@ class Signup extends Component {
                       id="email"
                       placeholder="example@example.com"
                       className=" block w-11/12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                      onChange={(evt) => this.actualizadatosaverificar(evt)}
+                      onChange={(evt) => this.actualizadatosaverificar(evt)} //Cuando se escriba en el input, se enviara a actualizadatosverificar
                     />
                   </div>
 
@@ -89,7 +96,7 @@ class Signup extends Component {
                       id="password"
                       placeholder="Contraseña"
                       className="block w-11/12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                      onChange={(evt) => this.actualizadatosaverificar(evt)}
+                      onChange={(evt) => this.actualizadatosaverificar(evt)} //Cuando se escriba en el input, se enviara a actualizadatosverificar
                     />
                   </div>
 
@@ -134,10 +141,15 @@ class Signup extends Component {
       </React.Fragment>
     );
   }
+
   actualizadatosaverificar(evt) {
+    // Crea el objeto de la persona
     var objetolocalpersona = new Object();
 
+    // Obtiene el objeto de la persona y lo iguala al state inicial
     objetolocalpersona = this.state.persona;
+
+    // Genera un switch dependiendo del input en el cual se estén ingresando datos, conforme se va escribiendo dependiendo del input, se irá guardando en el objeto ese estado de la persona
     switch (evt.target.id) {
       case "nombre": {
         console.log(this.state.persona);
@@ -155,20 +167,23 @@ class Signup extends Component {
         break;
       }
       case "password": {
-        console.log(this.state.persona);
         objetolocalpersona.password = evt.target.value;
         break;
       }
     }
+    // Igualamos el state de persona definido al inicio a objeto local
     this.setState({
       persona: objetolocalpersona,
     });
   }
 
+  // Creamos la función para guardar a la persona
   guardarPersona = () => {
+    // Creamos un objeto local para guardar los datos de la persona
     var objetolocal = this.state.persona;
-    // const Url = 'https://kongzilla.herokuapp.com/api/guardarpersona&#39;;
+    // Direccionamos al crear usuario que tenemos en nuestro backend
     const recipeUrl = "http://localhost:8888/api/nuevousuario";
+    // Creamos la request para hacer el envío de los datos
     const requestMetadata = {
       method: "PUT",
       headers: {
@@ -177,10 +192,13 @@ class Signup extends Component {
       body: JSON.stringify(objetolocal),
     };
 
+    // Hacemos el fetch para enviar los datos
     fetch(recipeUrl, requestMetadata)
       .then((res) => res.json())
       .then((personasActuales) => {
+        // Actualizamos el state de personas actuales, el cual era un array donde guardábamos a todas las personas
         this.setState({ personasActuales: personasActuales });
+        // Mostramos un mensaje de éxito
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido!",
@@ -191,6 +209,7 @@ class Signup extends Component {
           timer: 4000,
         });
         setTimeout(() => {
+          // Enviamos a la persona al LogIn para poder ingresar a la aplicación como tal
           this.goToLogIn();
         }, 4000);
       });

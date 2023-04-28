@@ -1,8 +1,12 @@
+// Importamos React y la libreria para las alertas
 import React, { Component } from "react";
 import Swal from "sweetalert2";
 
+//Creamos el componente usando clases
 class Places extends Component {
+  // Creamos el constructor con las propiedades
   state = {
+    //El state inicial que nos permitirá llevar los datos de los lugares como nombre, provincia, cantón, distrito y una fotografía, junto con un array para manejar los diferentes lugares guardados
     LUGAR: {
       NOMBRE: "",
       PROVINCIA: "",
@@ -14,13 +18,7 @@ class Places extends Component {
   };
 
   render() {
-    const inputStyleimg = {
-      border_radius: "50%",
-      cursor: "pointer",
-      width: "100px",
-    };
-    const oculta = { visibility: "collapse" };
-    const muestra = { visibility: "vivible" };
+    //A continuación, se muestra todo un forms para que la persona guarde y guarde los lugares que sean necesarios
     return (
       <React.Fragment>
         <div className="h-[90vh]">
@@ -158,11 +156,16 @@ class Places extends Component {
       </React.Fragment>
     );
   }
+
+  // Función para dar seguimiento a los cambios en los distintos inputs
   actualizadatosaguardar(evt) {
     var objetolocallugar = new Object();
+    //Creamos un objeto para guardar el lugar específico
 
     objetolocallugar = this.state.LUGAR;
+    //Asignamos el objeto del estado al objeto local
     switch (evt.target.id) {
+      //Dependiendo del input en el que nos encontremos, dará sguimiento a dicho input y a todos sus cambios
       case "NOMBRE": {
         console.log(this.state.LUGAR);
         objetolocallugar.NOMBRE = evt.target.value;
@@ -190,15 +193,19 @@ class Places extends Component {
         break;
       }
     }
+    // Luego, asignamos como state de LUGAR a los valores que se tengan actualmente
 
     this.setState({
       LUGAR: objetolocallugar,
     });
   }
 
+  // Esta función es específicamente para la imágen, para que de esta forma pueda manejarla como se debe, realizándolo con base 64
   _onChange = (e) => {
     var objetolocallugar = new Object();
+    //Creamos el objto local
     objetolocallugar = this.state.LUGAR;
+    //Lo asignamos a su state
     if (e.target.files && e.target.files[0]) {
       if (e.target.files[0].size < 2097152) {
         var reader = new FileReader();
@@ -207,6 +214,7 @@ class Places extends Component {
         };
         reader.readAsDataURL(e.target.files[0]);
 
+        // Como ahora tenemos a la imágen en el formato que necesitamos, procedemos a setearla como parte del objeto
         this.setState({
           LUGAR: objetolocallugar,
         });
@@ -215,10 +223,12 @@ class Places extends Component {
     console.log(e);
   };
 
+  // Función para guardar el lugar
   guardarLugar = () => {
     var objetolocal = this.state.LUGAR;
-    // const Url = 'https://kongzilla.herokuapp.com/api/guardarpersona&#39;;
+    //Creamos el objeto local
     const recipeUrl = "http://localhost:8888/api/nuevolugar";
+    //Creamos la url para la petición
     const requestMetadata = {
       method: "PUT",
       headers: {
@@ -226,18 +236,23 @@ class Places extends Component {
       },
       body: JSON.stringify(objetolocal),
     };
+    //Creamos los metadatos para la petición
 
-    fetch(recipeUrl, requestMetadata)
+
+    fetch(recipeUrl, requestMetadata) //Realizamos la petición por medio de fetch
       .then((res) => res.json())
       .then((lugares) => {
         this.setState({ lugares: lugares });
+        //Luego de guardar el lugar, limpiamos los inputs
         this.setState({
           NOMBRE: "",
           PROVINCIA: "",
           CANTON: "",
           DISTRITO: "",
         });
+        //Luego de guardar el lugar, limpiamos los inputs
         const Toast = Swal.mixin({
+          //Enviamos una pequeña alerta de que en efecto, se guardó su lugar
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
@@ -253,9 +268,11 @@ class Places extends Component {
           icon: 'success',
           title: 'Lugar guardado'
         })
+        //Generamos el alert
       });
   };
 
 }
 
+//Exportamos los lugares
 export { Places };

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 // Se crea el componente por medio de clases
 class Tabla extends Component {
-  // Se define el estado inicial del componente
+  // Define el estado inicial de la clase, el cual es un objeto con las claves NOMBRE, PROVINCIA, CANTON, DISTRITO y FOTO. También se define un array llamado "lugares".
   state = {
     LUGAR: {
       NOMBRE: "",
@@ -17,7 +17,7 @@ class Tabla extends Component {
     lugares: [],
   };
 
-  // Se define el método componentDidMount() para que se ejecute al momento de cargar el componente
+  // Este es un método del ciclo de vida de React que se ejecuta después de que se monta el componente en la página. Llama al método "listarLugares" para mostrar la lista de lugares.
   componentDidMount() {
     this.listarLugares(); //=> Se llama la función que llama los lugares desde el backend
   }
