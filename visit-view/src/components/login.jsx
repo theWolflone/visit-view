@@ -181,7 +181,7 @@ class Login extends Component {
         } else {
           //Si no existe, se envía un alert de error
           Swal.fire({
-            icon: "success",
+            icon: "error",
             title: "¡Algún dato es erróneo!",
             text: "Vuelve a intentarlo",
             showConfirmButton: true,
