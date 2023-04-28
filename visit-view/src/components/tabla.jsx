@@ -79,26 +79,25 @@ class Tabla extends Component {
             this.setState({
               lugares: lugares, // => En el state lugares redeclaramos los valores para que ya no se tome en cuenta al valor eliminado
             });
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+  
+            Toast.fire({
+              icon: "error",
+              title: "Lugar eliminado",
+            });
           });
         // Función para dar tiempo a que se elimine el lugar
-        setTimeout(() => {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
-
-          Toast.fire({
-            icon: "error",
-            title: "Lugar eliminado",
-          });
-        }, 1000);
+          
       }
     });
   };

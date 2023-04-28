@@ -9,13 +9,13 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      persona: {
-        nombre: "",
-        apellido: "",
-        email: "",
-        password: "",
+      persona: {  // => Declaramos el objeto
+        nombre: "", //=> Declaramos el nombre en string vacio
+        apellido: "", //=> Declaramos el apellido en string vacio
+        email: "", // => Declaramos el email en string vacio
+        password: "", //=> Declaramos la contraseña en string vacio
       },
-      personasActuales: [],
+      personasActuales: [], // => Declaramos el array de todas las personas
     };
   }
   //  goToLogIn() se encarga de cambiar la vista actual para ir a la vista de inicio de sesión. Este método se ejecuta cuando se hace clic en un botón que lleva a la vista de inicio de sesión.
@@ -77,7 +77,7 @@ class Signup extends Component {
                       type="email"
                       name="email"
                       id="email"
-                      placeholder="example@example.com"
+                      placeholder="ejemplo@ejemplo.com"
                       className=" block w-11/12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400  focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                       onChange={(evt) => this.actualizadatosaverificar(evt)} //Cuando se escriba en el input, se enviara a actualizadatosverificar
                     />

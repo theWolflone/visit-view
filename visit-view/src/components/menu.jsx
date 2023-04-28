@@ -138,7 +138,7 @@ class Menu extends Component {
                 className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
-                  Sign Up
+                  Registrarse
                 </span>
               </button>
 
@@ -149,7 +149,7 @@ class Menu extends Component {
                 className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
-                  Log In
+                  Iniciar sesión
                 </span>
               </button>
               <br />
@@ -177,7 +177,7 @@ class Menu extends Component {
                 className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
-                  Sign Up
+                  Registrarse
                 </span>
               </button>
 
@@ -188,7 +188,7 @@ class Menu extends Component {
                 className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
-                  Log In
+                  Iniciar sesión
                 </span>
               </button>
               <br />
@@ -215,7 +215,7 @@ class Menu extends Component {
                 className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
-                  Sign Up
+                  Registrarse
                 </span>
               </button>
 
@@ -226,7 +226,7 @@ class Menu extends Component {
                 className="relative pl-1 pr-4 md:pr-1 group before:absolute before:inset-x-0 before:bottom-0 before:h-7 md:before:h-0.5 before:pl-10 before:origin-right before:scale-x-0 before:bg-green-600 md:before:bg-green-600 before:transition before:duration-200 hover:before:origin-left hover:before:scale-x-100"
               >
                 <span className="relative tracking-wider text-black font-helveticaNeueMed text-xl">
-                  Log In
+                  Iniciar sesión
                 </span>
               </button>
               <br />

@@ -8,8 +8,8 @@ class Landing extends Component {
 
   // Se define una función llamada directLog que se utiliza para cambiar el estado de los componentes loginView, signupView y homeView que se pasan como propiedades (props) desde otro componente.
   directLog = () => {
-    this.props.loginView(true);
-    this.props.signupView(false);
+    this.props.loginView(false);
+    this.props.signupView(true);
     this.props.homeView(false);
   };
 
