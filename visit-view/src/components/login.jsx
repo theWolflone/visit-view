@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Menu } from "./menu";
 import { Places } from "./addPlaces";
-import login from "../assets/login.jpg";
-class Login extends Component { 
-
+import Swal from "sweetalert2";
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +19,11 @@ class Login extends Component {
   handleLogged = () => {
     this.props.userState(true);
   };
+  createAccount = () => {
+    this.props.loginView(false);
+    this.props.signupView(true);
+    this.props.homeView(false);
+  }
 
   render() {
     if (this.state.ingresaralsistema) {
@@ -33,7 +36,7 @@ class Login extends Component {
       return (
         <React.Fragment>
           <div className="bg-white">
-            <div className="flex justify-start h-[88.6vh]">
+            <div className="flex justify-start h-[88.6vh] 2xl:h-[92vh]">
               <div className="hidden bg-cover lg:block lg:w-2/3 bg-login">
                 <div className="flex items-center h-full px-20 bg-emerald-800 bg-opacity-40">
                   <div>
@@ -59,9 +62,7 @@ class Login extends Component {
 
                   <div className="mt-8">
                     <div>
-                      <label
-                        className="block mb-2 text-sm text-gray-60"
-                      >
+                      <label className="block mb-2 text-sm text-gray-60">
                         Email
                       </label>
                       <input
@@ -76,9 +77,7 @@ class Login extends Component {
 
                     <div className="mt-6">
                       <div className="flex justify-between mb-2">
-                        <label
-                          className="text-sm text-gray-600"
-                        >
+                        <label className="text-sm text-gray-600">
                           Contraseña
                         </label>
                       </div>
@@ -103,16 +102,16 @@ class Login extends Component {
                       </button>
                     </div>
 
-                    <p className="mt-4 text-sm text-center text-gray-400">
+                    {/* <p className="mt-4 text-sm text-center text-gray-400">
                       ¿No tienes cuenta?{" "}
-                      <a
-                        href="#"
-                        className="text-blue-500 focus:outline-none focus:underline hover:underline"
-                      >
+                      <button
+                        className="text-blue-500 focus:outline-none focus:underline hover:underline cursor-pointer"
+                        onClick={this.noAccount}
+                        >
                         Sign up
-                      </a>
+                      </button>
                       .
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -158,15 +157,27 @@ class Login extends Component {
       .then((res) => res.json())
       .then((persona) => {
         if (persona.length === 1) {
-          alert("Ingreso exitoso");
-          this.setState({
-            ingresaralsistema: true,
+          Swal.fire({
+            icon: "success",
+            title: "¡Bienvenido de nuevo!",
+            text: "Ingreso exitoso",
+            showConfirmButton: false,
+            timer: 3000,
           });
-          this.handleLogged();
+          setTimeout(() => {
+            this.setState({
+              ingresaralsistema: true,
+            });
+            this.handleLogged();
+          }, 3000);
         } else {
           alert("Algun dato es erroneo");
         }
       });
+  };
+  
+  noAccount = () => {
+    this.createAccount();
   };
 }
 

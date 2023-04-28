@@ -6,6 +6,7 @@ module.exports = {
       backgroundImage: {
         'login': "url('assets/login2.jpg')",
         'signup': "url('assets/login.jpg')",
+        
       }
     },
   },

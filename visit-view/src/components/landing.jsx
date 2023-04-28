@@ -1,16 +1,19 @@
+// Se importan los módulos necesarios de React y algunos archivos de imagen.
 import React, { Component } from "react";
-import { Menu } from "./menu";
 import background from "../assets/background.jpg";
 import WhiteLogo from "../assets/whiteLogo.png";
 
+// Se define una clase Landing que extiende la clase Component de React.
 class Landing extends Component {
 
+  // Se define una función llamada directLog que se utiliza para cambiar el estado de los componentes loginView, signupView y homeView que se pasan como propiedades (props) desde otro componente.
   directLog = () => {
     this.props.loginView(true);
     this.props.signupView(false);
     this.props.homeView(false);
   };
 
+  // Se define el método render, que devuelve el contenido HTML que se mostrará en la página.
   render() {
     return (
       <React.Fragment>
@@ -25,6 +28,7 @@ class Landing extends Component {
             <h1 className="p-6 text-2xl text-white">
               Guarda y explora lo que has visitado por el mundo
             </h1>
+            {/* Se define un botón que se mostrará en la página y se le asigna una función de onClick que se ejecutará cuando el usuario haga clic en el botón. */}
             <button
               onClick={this.funLog}
               className="relative rounded-xl shadow-xl group flex items-center text-green-800 justify-center bg-white px-8 py-3 hover:text-white font-semibold"
@@ -41,9 +45,10 @@ class Landing extends Component {
       </React.Fragment>
     );
   }
+  // Se define una función llamada funLog que simplemente llama a la función directLog.
   funLog = () => {
     this.directLog();
   };
 }
-
+// Se exporta el componente Landing para que pueda ser utilizado en otro lugar de la aplicación.
 export { Landing };

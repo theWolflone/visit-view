@@ -119,7 +119,7 @@ class Menu extends Component {
                 className="absolute md:h-10 my-auto left-10 sm:h-8 h-4 cursor-pointer"
                 type="button"
                 src={MenuLogo}
-                onClick={(e) => this.muestraHome()}
+                // onClick={(e) => this.muestraHome()}
               />
               <button
                 onClick={(e) => this.muestraSignUp()}
@@ -219,7 +219,7 @@ class Menu extends Component {
               </button>
               <br />
             </div>
-            <Login userState={this.userState}/>
+            <Login userState={this.userState} loginView={this.loginView} signupView={this.signupView} homeView={this.homeView}/>
           </React.Fragment>
         );
       }
